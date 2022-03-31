@@ -55,6 +55,7 @@ public class MyApplication {
         new StreamsListBack().show();
     }
 
+
     public void stop() {
         current = getCurrentForm();
         if(current instanceof Dialog) {
