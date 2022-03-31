@@ -30,17 +30,15 @@ public class ServiceNewsletter {
     }
 
     public ArrayList<Newsletter> parseNewsletters(String jsonText){
-        int i=0;
+
         try {
             newsletters= new ArrayList<>();
             JSONParser json= new JSONParser();
             Map<String, Object> newslettersListJson=
                     json.parseJSON(new CharArrayReader(jsonText.toCharArray()));
 
-
             if ( newslettersListJson.get("root")!=null ){
                 List<Map<String, Object>> list = (List<Map<String, Object>>) newslettersListJson.get("root");
-
 
                 for (Map<String, Object> obj : list) {
 
