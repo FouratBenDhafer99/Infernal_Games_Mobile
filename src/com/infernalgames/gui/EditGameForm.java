@@ -16,10 +16,12 @@ public class EditGameForm extends Form {
     private String imageSrc=null;
     private Image image=null;
 
-    public  EditGameForm(Form previous, Game game){
+    Form parentForm;
+    public  EditGameForm(Form previous, Form parent, Game game){
         setTitle("Edit Game");
 
 
+        parentForm= parent;
         getContentPane().setScrollVisible(false);
 
         TextField name = new TextField(game.getName(),"Enter game name");
@@ -104,7 +106,7 @@ public class EditGameForm extends Form {
                         try {
                             if(ServiceGame.getInstance().ajoutGame(g)){
                                 Dialog.show("Success","Game updated with success!",new Command("Go to the list"));
-                                new BackGameList().showBack();
+                                new BackGameList(parentForm).showBack();
                             }else {
                                 Dialog.show("ERROR","Server error :(",new Command("OK"));
                             }
@@ -125,7 +127,7 @@ public class EditGameForm extends Form {
 
             }
         });
-        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new BackGameList().showBack());
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new BackGameList(parentForm).showBack());
     }
 
     private void addStringValue(String s, Component v) {

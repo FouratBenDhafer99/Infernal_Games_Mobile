@@ -23,9 +23,11 @@ public class AjoutGameForm extends Form {
     private String imageSrc=null;
     private Image image=null;
 
-    public AjoutGameForm (Form previous) {
+    Form prv;
+    public AjoutGameForm (Form previous, Form parent) {
         setTitle("Add Game");
 
+        prv= parent;
         getContentPane().setScrollVisible(false);
 
         TextField name = new TextField("","Enter game name");
@@ -113,7 +115,7 @@ public class AjoutGameForm extends Form {
                         try {
                             if(ServiceGame.getInstance().ajoutGame(game)){
                                 Dialog.show("Success","Game added with success!",new Command("Go to the list"));
-                                new BackGameList().showBack();
+                                new BackGameList(prv).showBack();
                             }else {
                                 Dialog.show("ERROR","Server error :(",new Command("OK"));
                             }
@@ -132,7 +134,7 @@ public class AjoutGameForm extends Form {
             }
         });
 
-        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new BackGameList().showBack());
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new BackGameList(prv).showBack());
     }
 
     private void addStringValue(String s, Component v) {

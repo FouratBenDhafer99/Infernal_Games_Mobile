@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 public class BackGameList extends Form {
 
-    public BackGameList(){
+    public BackGameList(Form previous){
         setTitle("Games");
         setLayout(BoxLayout.y());
-
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
         ArrayList<Game> games = ServiceGame.getInstance().AffichageGame();
 
         Label header= new Label("Game name");
@@ -45,7 +45,7 @@ public class BackGameList extends Form {
             }
 
             edit.addActionListener(e->{
-                new EditGameForm(this, game).show();
+                new EditGameForm(this, previous, game).show();
             });
 
             delete.addActionListener(e->{
@@ -57,6 +57,6 @@ public class BackGameList extends Form {
             add(content);
         }
 
-        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AjoutGameForm(this).show());
+        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AjoutGameForm(this, previous).show());
     }
 }

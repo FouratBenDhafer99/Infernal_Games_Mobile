@@ -17,7 +17,7 @@ import com.infernalgames.utils.Statics;
 
 public class WatchStream extends Form {
 
-    public WatchStream(Stream stream){
+    public WatchStream(Form parent,Stream stream){
         setTitle(stream.getTitle());
         setLayout(BoxLayout.y());
 
@@ -36,6 +36,7 @@ public class WatchStream extends Form {
         }
 
         addAll( labelDesc, description, category, reconnectBtn);
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new StreamsListFront(parent).showBack());
     }
 
     MediaPlayer mp;

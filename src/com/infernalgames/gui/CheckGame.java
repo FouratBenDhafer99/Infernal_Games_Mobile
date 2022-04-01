@@ -44,7 +44,7 @@ public class CheckGame extends Form {
 
         Container ct= new Container(new BorderLayout());
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> new FrontGameList(previous).showBack());
         playVideo(game.getTrailer_Url());
 
         try{

@@ -64,6 +64,6 @@ public class SubscriptionList extends Form {
                 data.add(content);
             }
         }
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> new NewsletterList(previous).showBack());
     }
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class StreamsListBack extends Form {
 
-    public StreamsListBack(){
+    public StreamsListBack(Form previous){
         setTitle("Streams");
         setLayout(BoxLayout.y());
         ArrayList<Stream> streams= ServiceStream.getInstance().getAllStreams();
@@ -82,7 +82,7 @@ public class StreamsListBack extends Form {
 
         getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_CATEGORY, e-> new StreamCategoryList(this).show());
         getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_RATE_REVIEW, e-> new StreamRatingList(this).show());
-
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
 
 

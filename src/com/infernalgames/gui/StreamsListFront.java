@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class StreamsListFront extends Form {
 
-    public StreamsListFront(){
+    public StreamsListFront(Form previous){
         setTitle("Streams");
         setLayout(BoxLayout.y());
 
@@ -37,7 +37,7 @@ public class StreamsListFront extends Form {
                     cntParent.add(pictureError);
                 }
                 watchStreamBtn.addActionListener(e->{
-                    new WatchStream(stream).show();
+                    new WatchStream(previous, stream).show();
                 });
                 ctChild.addAll(title, cat, rating);
                 cntParent.add(ctChild);
@@ -50,6 +50,7 @@ public class StreamsListFront extends Form {
             ct.add(label);
             this.add(ct);
         }
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
         /*
         SpanLabel sp= new SpanLabel();
@@ -58,27 +59,5 @@ public class StreamsListFront extends Form {
         addAll(sp, watchStreamBtn);
          */
     }
-    public StreamsListFront(Form previous){
-        setTitle("Streams");
-        setLayout(BoxLayout.y());
 
-        ArrayList<Stream> streams= ServiceStream.getInstance().getAllActiveStreams();
-
-        if(streams.size()>0) {
-            for (Stream stream : streams) {
-                Label label = new Label(stream.getTitle());
-                Container ct = new Container(BoxLayout.x());
-                Button watchStreamBtn = new Button("Watch stream!");
-
-                ct.addAll(label, watchStreamBtn);
-                this.add(ct);
-            }
-        }else{
-            Label label = new Label("There's no live streams right now :/");
-            Container ct = new Container(BoxLayout.x());
-
-            ct.add(label);
-            this.add(ct);
-        }
-    }
 }

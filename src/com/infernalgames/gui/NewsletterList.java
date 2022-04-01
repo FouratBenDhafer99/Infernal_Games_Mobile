@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class NewsletterList extends Form {
 
-    public NewsletterList(){
+    public NewsletterList(Form previous){
         setTitle("Newsletters");
         setLayout(BoxLayout.y());
 
@@ -57,7 +57,7 @@ public class NewsletterList extends Form {
                 Button edit= new Button();
                 FontImage.setMaterialIcon(edit, FontImage.MATERIAL_EDIT);
                 edit.addActionListener(e->{
-                    new EditNewsletterForm(this, newsletter).show();
+                    new EditNewsletterForm(previous, newsletter).show();
                 });
                 actions.add(edit);
             }
@@ -91,8 +91,9 @@ public class NewsletterList extends Form {
             });
         }
 
-        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AddNewsletterForm(this).show());
-        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_PEOPLE_ALT, e-> new SubscriptionList(this).show());
+        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AddNewsletterForm(previous).show());
+        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_PEOPLE_ALT, e-> new SubscriptionList( previous).show());
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
     }
 }

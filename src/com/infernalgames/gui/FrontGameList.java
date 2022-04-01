@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class FrontGameList extends Form {
 
-    public FrontGameList(){
+    public FrontGameList(Form previous){
         setTitle("Games");
         setLayout(BoxLayout.y());
 
@@ -19,7 +19,7 @@ public class FrontGameList extends Form {
         for (Game game: games){
             Button btnGame= new Button();
             btnGame.addActionListener(e->{
-                new CheckGame(this, game).show();
+                new CheckGame(previous, game).show();
             });
 
 
@@ -42,6 +42,6 @@ public class FrontGameList extends Form {
             cntParent.setLeadComponent(btnGame);
             add(cntParent);
         }
-
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
 }

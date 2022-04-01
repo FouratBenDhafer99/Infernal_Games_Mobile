@@ -51,9 +51,10 @@ public class MyApplication {
             return;
         }
 
+        new Everything().show();
         //new NewsletterList().show();
         //new StreamsListBack().show();
-        new StreamsListFront().show();
+        //new StreamsListFront().show();
         //new BackGameList().show();
         //new FrontGameList().show();
 
@@ -61,24 +62,7 @@ public class MyApplication {
 
 
 
-    public void front(){
-        Form frontSide= new Form();
-        frontSide.setTitle("Infernal Games");
-        frontSide.getToolbar().addCommandToSideMenu("Games", null, e-> new FrontGameList().show());
-        frontSide.getToolbar().addCommandToSideMenu("Games", null, e-> new StreamsListFront().show());
-        frontSide.add(new NewsletterList());
-        frontSide.show();
-    }
 
-    public void back(){
-        Form backSide= new Form();
-        backSide.setTitle("Infernal Games");
-        backSide.getToolbar().addMaterialCommandToSideMenu("Games", FontImage.MATERIAL_GAMES, e-> new BackGameList().show());
-        backSide.getToolbar().addMaterialCommandToSideMenu("Streams", FontImage.MATERIAL_STREAM, e-> new StreamsListBack().show());
-        backSide.getToolbar().addMaterialCommandToSideMenu("Newsletters", FontImage.MATERIAL_EMAIL, e-> new NewsletterList().show());
-        backSide.add(new NewsletterList());
-        backSide.show();
-    }
 
     public void stop() {
         current = getCurrentForm();

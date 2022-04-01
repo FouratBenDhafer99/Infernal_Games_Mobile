@@ -206,7 +206,7 @@ public class EditNewsletterForm extends Form {
                 try {
                     if(ServiceNewsletter.getInstance().editNewsletter(newsletter)){
                         Dialog.show("Success","Newsletter updated with success!",new Command("Go to the list"));
-                        new NewsletterList().showBack();
+                        new NewsletterList(previous).showBack();
                     }else {
                         Dialog.show("ERROR","Server error :(",new Command("OK"));
                     }
@@ -219,6 +219,6 @@ public class EditNewsletterForm extends Form {
 
         });
 
-        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new NewsletterList().showBack());
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new NewsletterList(previous).showBack());
     }
 }

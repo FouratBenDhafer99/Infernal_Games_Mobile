@@ -27,10 +27,12 @@ public class AddNewsletterForm extends Form {
     private String iS= null;
     private String iT= null;
 
-    public AddNewsletterForm(Form previous){
+    Form formParent;
+    public AddNewsletterForm(Form parent){
         setTitle("Add newsletter");
         setLayout(BoxLayout.y());
 
+        formParent= parent;
         TextField titleIntro =new TextField("", "Intro Title");
         TextArea contentIntro = new TextArea("", 10,10);
         contentIntro.setHint( "Intro Content");
@@ -202,7 +204,7 @@ public class AddNewsletterForm extends Form {
                 try {
                     if(ServiceNewsletter.getInstance().addNewsletter(nw)){
                         Dialog.show("Success","Newsletter added with success!",new Command("Go to the list"));
-                        new NewsletterList().showBack();
+                        new NewsletterList(parent).showBack();
                     }else {
                         Dialog.show("ERROR","Server error :(",new Command("OK"));
                     }
@@ -233,7 +235,7 @@ public class AddNewsletterForm extends Form {
         });
         */
 
-        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new NewsletterList().showBack());
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new NewsletterList(parent).showBack());
     }
 
 }
