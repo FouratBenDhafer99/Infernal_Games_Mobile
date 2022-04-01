@@ -260,8 +260,11 @@
         <val key="SkipButton.transparency" value="0" />
         <val key="StatusBarSideMenu.margin" value="0.0,0.0,0.0,0.0" />
         <val key="StatusBarSideMenu.padding" value="0.0,0.0,0.0,0.0" />
+        <border key="TextArea.border" type="rounded" thickness="0.0" arcW="1" arcH="1" color="16777215" />
+        <val key="TextArea.fgColor" value="ffffff" />
+        <val key="TextArea.transparency" value="0" />
         <val key="TextField.align" value="4" />
-        <border key="TextField.border" type="empty" />
+        <border key="TextField.border" type="line" millimeters="false" thickness="0.0" color="16777215" />
         <val key="TextField.fgColor" value="ffffff" />
         <val key="TextField.margin" value="0.0,0.0,0.0,0.0" />
         <val key="TextField.padUnit" value="2,2,2,2" />
