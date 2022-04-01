@@ -6,10 +6,7 @@ import com.codename1.components.ToastBar;
 import com.codename1.io.Log;
 import com.codename1.media.Media;
 import com.codename1.media.MediaManager;
-import com.codename1.ui.Container;
-import com.codename1.ui.Form;
-import com.codename1.ui.Image;
-import com.codename1.ui.Label;
+import com.codename1.ui.*;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.infernalgames.entities.Game;
@@ -27,24 +24,27 @@ public class CheckGame extends Form {
         setTitle(game.getName());
         setLayout(BoxLayout.y());
 
-        Container cntParent= new Container(BoxLayout.y());
         try {
             Image picture= Image.createImage(Statics.IMAGES_URL+"Games/"+game.getPicture()).fill(200, 200);
-            cntParent.add(picture);
+            add(picture);
         }catch (Exception exception){
             Label pictureError= new Label("Picture not found");
-            cntParent.add(pictureError);
+            add(pictureError);
         }
 
+        Container cntDesc= new Container(BoxLayout.y());
         Label descLabel= new Label("Description");
         Label desc= new Label(game.getDescription());
-        Label category= new Label("Category: "+game.getRating());
+        cntDesc.addAll(descLabel,desc);
+        Label category= new Label("Category: "+game.getCategory());
         Label rating= new Label("Rating: "+game.getRating());
-        addAll(descLabel, desc, category, rating);
+        Label price= new Label("Price: "+game.getPrice());
+        addAll(cntDesc, category, rating, price);
 
 
         Container ct= new Container(new BorderLayout());
 
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
         playVideo(game.getTrailer_Url());
 
         try{

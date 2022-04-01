@@ -29,6 +29,7 @@ public class NewsletterList extends Form {
         head.setLayout(new GridLayout(1,5));
         head.add(headerTitle).add(headerAuth).add(headerDate).add(headerSent);
         head.getAllStyles().setBgColor(0x9932CC);
+        head.getAllStyles().setBgColor(0x311854);
         head.getAllStyles().setBgTransparency(255);
         add(head);
 
@@ -39,13 +40,13 @@ public class NewsletterList extends Form {
         int i=0;
         for (Newsletter newsletter: newsletters){
             Label title= new Label(newsletter.getTitleIntro());
-            title.getAllStyles().setFgColor(0x000000);
+            //
             Label author= new Label(newsletter.getAuthor().getNom());
-            author.getAllStyles().setFgColor(0x000000);
+            //
             Label date= new Label(String.valueOf(newsletter.getDate()));
-            date.getAllStyles().setFgColor(0x000000);
+            //
             Label sent= new Label(String.valueOf(newsletter.isSent()));
-            sent.getAllStyles().setFgColor(0x000000);
+            //
 
             Button edit= new Button();
             FontImage.setMaterialIcon(edit, FontImage.MATERIAL_EDIT);
@@ -58,6 +59,10 @@ public class NewsletterList extends Form {
             if (++i%2==0){
                 content.getAllStyles().setBgColor(0xBA55D3);
                 content.getAllStyles().setBgTransparency(255);
+                title.getAllStyles().setFgColor(0x000000);
+                author.getAllStyles().setFgColor(0x000000);
+                date.getAllStyles().setFgColor(0x000000);
+                sent.getAllStyles().setFgColor(0x000000);
             }
 
             Container actions= BoxLayout.encloseX(edit, delete);
@@ -74,7 +79,9 @@ public class NewsletterList extends Form {
                 getContentPane().animateLayout(150);
             });
         }
+
         getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AddNewsletterForm(this).show());
-        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_PEOPLE_ALT, e-> new AddNewsletterForm(this).show());
+        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_PEOPLE_ALT, e-> new SubscriptionList(this).show());
+
     }
 }

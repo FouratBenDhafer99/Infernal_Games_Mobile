@@ -9,7 +9,9 @@ import com.infernalgames.services.ServiceStreamCategory;
 
 public class EditStreamCategoryForm extends Form{
 
-    public EditStreamCategoryForm(Form previous, StreamCategory category){
+    Form parentForm=null;
+    public EditStreamCategoryForm(Form previous, StreamCategory category, Form parent){
+        parentForm = parent;
         setTitle("Add Stream Category");
         setLayout(BoxLayout.y());
 
@@ -26,7 +28,7 @@ public class EditStreamCategoryForm extends Form{
                         category.setLabel(label.getText());
                         if (ServiceStreamCategory.getInstance().editCategory(category)){
                             Dialog.show("Success","Category updated with success!",new Command("Return to the list"));
-                            new StreamCategoryList().showBack();
+                            new StreamCategoryList(parentForm).showBack();
 
                         }else {
                             Dialog.show("ERROR","Server error :(",new Command("OK"));

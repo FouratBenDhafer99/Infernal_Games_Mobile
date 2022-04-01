@@ -29,25 +29,20 @@ public class AjoutGameForm extends Form {
         getContentPane().setScrollVisible(false);
 
         TextField name = new TextField("","Enter game name");
-        name.setUIID("TextFieldBlack");
         addStringValue("Name",name);
 
         TextArea description = new TextArea("",10,10);
         description.setHint("Give the game a description");
-        description.setUIID("TextFieldBlack");
         addStringValue("Description",description);
 
         TextField price = new TextField("","How much is it?");
-        price.setUIID("TextFieldBlack");
         addStringValue("Price",price);
 
 
         TextField trailerUrl = new TextField("","The game's trailer");
-        trailerUrl.setUIID("TextFieldBlack");
         addStringValue("TrailerUrl",trailerUrl);
 
         TextField category = new TextField("","Category");
-        category.setUIID("TextFieldBlack");
         addStringValue("Category",category);
 
         Label picture= new Label("Games Image");

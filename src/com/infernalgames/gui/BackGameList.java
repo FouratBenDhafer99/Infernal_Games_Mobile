@@ -27,7 +27,7 @@ public class BackGameList extends Form {
         int i=0;
         for (Game game: games){
             Label label= new Label(game.getName());
-            label.getAllStyles().setFgColor(0x000000);
+
 
             Button edit= new Button();
             FontImage.setMaterialIcon(edit, FontImage.MATERIAL_EDIT);
@@ -41,6 +41,7 @@ public class BackGameList extends Form {
             if (++i%2==0){
                 content.getAllStyles().setBgColor(0xBA55D3);
                 content.getAllStyles().setBgTransparency(255);
+                label.getAllStyles().setFgColor(0x000000);
             }
 
             edit.addActionListener(e->{

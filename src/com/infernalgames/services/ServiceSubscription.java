@@ -1,10 +1,10 @@
 package com.infernalgames.services;
 
-import com.codename1.io.CharArrayReader;
-import com.codename1.io.ConnectionRequest;
-import com.codename1.io.JSONParser;
+import com.codename1.io.*;
+import com.codename1.ui.events.ActionListener;
 import com.infernalgames.entities.Subscription;
 import com.infernalgames.entities.Utilisateur;
+import com.infernalgames.utils.Statics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,19 +48,81 @@ public class ServiceSubscription {
 
                     Subscription sub= new Subscription();
                     sub.setId((int) Float.parseFloat(obj.get("id").toString()));
-                    sub.setStatus(Boolean.parseBoolean(obj.get("sent").toString()));
+                    sub.setStatus(Boolean.parseBoolean(obj.get("status").toString()));
                     sub.setUser(user);
 
                     subscriptions.add(sub);
                 }
             }else {
+                Map<String, Object> map = (Map<String, Object>) subsListJson.get("user");
+                Utilisateur user = new Utilisateur();
+                user.setId((int) Float.parseFloat(map.get("id").toString()));
+                user.setNom(map.get("name").toString());
+                user.setPrenom(map.get("lastName").toString());
+                user.setEmail(map.get("email").toString());
 
+                Subscription sub= new Subscription();
+                sub.setId((int) Float.parseFloat(subsListJson.get("id").toString()));
+                sub.setStatus(Boolean.parseBoolean(subsListJson.get("status").toString()));
+                sub.setUser(user);
+
+                subscriptions.add(sub);
             }
 
         }catch (Exception e){
 
         }
+        return subscriptions;
     }
 
+    public ArrayList<Subscription> getAllSubs(){
+        req= new ConnectionRequest();
+        String url = Statics.BASE_URL+"/newslettersMobile/getAllSubs";
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent networkEvent) {
+                subscriptions= parseSubs(new String(req.getResponseData()));
+                req.removeResponseCodeListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return subscriptions;
+    }
+
+    public boolean subscribe(Utilisateur user){
+        req= new ConnectionRequest();
+        String url = Statics.BASE_URL+"/newslettersMobile/subscribeToNewsletter";
+        req.setUrl(url);
+        req.setPost(false);
+        req.addArgument("userId", String.valueOf(user.getId()) );
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent networkEvent) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseCodeListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+    }
+
+    public boolean unsubscribe(Utilisateur user){
+        req= new ConnectionRequest();
+        String url = Statics.BASE_URL+"/newslettersMobile/unsubscribeToNewsletter";
+        req.setUrl(url);
+        req.setPost(false);
+        req.addArgument("userId", String.valueOf(user.getId()) );
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent networkEvent) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseCodeListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+    }
 
 }

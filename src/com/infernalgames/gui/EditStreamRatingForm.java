@@ -9,7 +9,9 @@ import com.infernalgames.services.ServiceStreamRating;
 
 public class EditStreamRatingForm extends Form {
 
-    public EditStreamRatingForm(Form previous, StreamRating rating){
+    Form parentForm=null;
+    public EditStreamRatingForm(Form previous, StreamRating rating, Form parent){
+        parentForm=parent;
         setTitle("Edit Stream Rating");
         setLayout(BoxLayout.y());
 
@@ -26,7 +28,7 @@ public class EditStreamRatingForm extends Form {
                         rating.setLabel(label.getText());
                         if (ServiceStreamRating.getInstance().editRating(rating)){
                             Dialog.show("Success","Rating updated with success!",new Command("Return to the list"));
-                            new StreamRatingList().showBack();
+                            new StreamRatingList(parentForm).showBack();
 
                         }else {
                             Dialog.show("ERROR","Server error :(",new Command("OK"));

@@ -3,6 +3,7 @@ package com.infernalgames.gui;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.*;
 import com.infernalgames.entities.Stream;
+import com.infernalgames.entities.StreamRating;
 import com.infernalgames.services.ServiceStream;
 
 import java.util.ArrayList;
@@ -114,30 +115,43 @@ public class StreamsListBack extends Form {
             int i=0;
             for (Stream stream: streams){
                 Label sTitle= new Label(stream.getTitle());
-                sTitle.getAllStyles().setFgColor(0x000000);
+
                 Label sStreamer= new Label(stream.getAccessData().getStreamer().getNom());
-                sStreamer.getAllStyles().setFgColor(0x000000);
+
                 Label sRating= new Label(stream.getRating().getLabel());
-                sRating.getAllStyles().setFgColor(0x000000);
+
                 Label sCategory= new Label(stream.getCategory().getLabel());
-                sCategory.getAllStyles().setFgColor(0x000000);
-                Label sState= new Label( String.valueOf(stream.getState()) );
-                sState.getAllStyles().setFgColor(0x000000);
+
+
+                Label sState=null;
+                if (stream.getState()){
+                    sState= new Label("Live");
+                }else {
+                    sState= new Label("Done");
+                }
 
                 Container content= new Container();
                 content.setLayout(new GridLayout(1,5));
-
                 if (++i%2==0){
                     content.getAllStyles().setBgColor(0xBA55D3);
                     content.getAllStyles().setBgTransparency(255);
+                    sCategory.getAllStyles().setFgColor(0x000000);
+                    sTitle.getAllStyles().setFgColor(0x000000);
+                    sStreamer.getAllStyles().setFgColor(0x000000);
+                    sRating.getAllStyles().setFgColor(0x000000);
+                    sState.getAllStyles().setFgColor(0x000000);
                 }
 
                 content.add(sTitle).add(sStreamer).add(sRating).add(sCategory).add(sState);
                 data.add(content);
-
             }
-
+        }else {
+            Label empty= new Label("There's no streams");
+            add(empty);
         }
+
+        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_CATEGORY, e-> new StreamCategoryList(this).show());
+        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_RATE_REVIEW, e-> new StreamRatingList(this).show());
 
     }
 

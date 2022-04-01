@@ -9,7 +9,9 @@ import com.infernalgames.services.ServiceStreamRating;
 
 public class AddStreamRatingForm extends Form {
 
-    public AddStreamRatingForm(Form previous){
+    Form parentForm= null;
+    public AddStreamRatingForm(Form previous, Form parent){
+        parentForm= parent;
         setTitle("Add Stream Rating");
         setLayout(BoxLayout.y());
 
@@ -26,8 +28,7 @@ public class AddStreamRatingForm extends Form {
                         StreamRating rating= new StreamRating( label.getText());
                         if (ServiceStreamRating.getInstance().addRating(rating)){
                             Dialog.show("Success","Rating added with success!",new Command("Go to the list"));
-                            new StreamRatingList().showBack();
-
+                            new StreamRatingList(parentForm).showBack();
                         }else {
                             Dialog.show("ERROR","Server error :(",new Command("OK"));
                         }

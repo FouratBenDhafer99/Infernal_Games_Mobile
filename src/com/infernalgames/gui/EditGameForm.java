@@ -23,25 +23,19 @@ public class EditGameForm extends Form {
         getContentPane().setScrollVisible(false);
 
         TextField name = new TextField(game.getName(),"Enter game name");
-        name.setUIID("TextFieldBlack");
         addStringValue("Name",name);
 
         TextArea description = new TextArea(game.getDescription(),10,10);
-        description.setHint("Give the game a description");
-        description.setUIID("TextFieldBlack");
         addStringValue("Description",description);
 
         TextField price = new TextField(String.valueOf(game.getPrice()),"How much is it?");
-        price.setUIID("TextFieldBlack");
         addStringValue("Price",price);
 
 
         TextField trailerUrl = new TextField(game.getTrailer_Url(),"The game's trailer");
-        trailerUrl.setUIID("TextFieldBlack");
         addStringValue("TrailerUrl",trailerUrl);
 
         TextField category = new TextField(game.getCategory(),"Category");
-        category.setUIID("TextFieldBlack");
         addStringValue("Category",category);
 
         Button btnPicture= new Button("Upload");

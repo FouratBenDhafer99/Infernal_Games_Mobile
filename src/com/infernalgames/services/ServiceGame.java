@@ -72,7 +72,7 @@ public class ServiceGame {
                 game.setPrice(Float.parseFloat(gamesJSON.get("price").toString()));
                 game.setTrailer_Url(gamesJSON.get("trailerUrl").toString());
                 game.setId((int) Float.parseFloat(gamesJSON.get("id").toString()));
-
+                game.setCategory(gamesJSON.get("category").toString());
                 games.add(game);
             }
         }catch (Exception e){

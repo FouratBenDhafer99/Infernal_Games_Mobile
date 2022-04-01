@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class StreamCategoryList extends Form {
 
-    public StreamCategoryList(){
+    public StreamCategoryList(Form previous){
         setTitle("Stream Categories");
         setLayout(BoxLayout.y());
 
@@ -28,7 +28,7 @@ public class StreamCategoryList extends Form {
 
         for (StreamCategory category: categories){
             Label label= new Label(category.getLabel());
-            label.getAllStyles().setFgColor(0x000000);
+
 
             Button edit= new Button();
             FontImage.setMaterialIcon(edit, FontImage.MATERIAL_EDIT);
@@ -42,9 +42,10 @@ public class StreamCategoryList extends Form {
             if (++i%2==0){
                 content.getAllStyles().setBgColor(0xBA55D3);
                 content.getAllStyles().setBgTransparency(255);
+                label.getAllStyles().setFgColor(0x000000);
             }
             edit.addActionListener(e->{
-                new EditStreamCategoryForm(this, category).show();
+                new EditStreamCategoryForm(this, category, previous).show();
             });
             delete.addActionListener(e->{
                 ServiceStreamCategory.getInstance().deleteCategory(category);
@@ -54,6 +55,7 @@ public class StreamCategoryList extends Form {
             });
             add(content);
         }
-        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AddStreamCategoryForm(this).show());
+        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AddStreamCategoryForm(this, previous).show());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class StreamRatingList extends Form {
 
-    public StreamRatingList(){
+    public StreamRatingList(Form previous){
         setTitle("Stream Ratings");
         setLayout(BoxLayout.y());
 
@@ -28,7 +28,6 @@ public class StreamRatingList extends Form {
 
         for (StreamRating rating: ratings){
             Label label= new Label(rating.getLabel());
-            label.getAllStyles().setFgColor(0x000000);
 
             Button edit= new Button();
             FontImage.setMaterialIcon(edit, FontImage.MATERIAL_EDIT);
@@ -42,9 +41,10 @@ public class StreamRatingList extends Form {
             if (++i%2==0){
                 content.getAllStyles().setBgColor(0xBA55D3);
                 content.getAllStyles().setBgTransparency(255);
+                label.getAllStyles().setFgColor(0x000000);
             }
             edit.addActionListener(e->{
-                new EditStreamRatingForm(this, rating).show();
+                new EditStreamRatingForm(this, rating, previous).show();
             });
             delete.addActionListener(e->{
                 ServiceStreamRating.getInstance().deleteRating(rating);
@@ -54,6 +54,7 @@ public class StreamRatingList extends Form {
             });
             add(content);
         }
-        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AddStreamRatingForm(this).show());
+        getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AddStreamRatingForm(this, previous).show());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
 }

@@ -103,7 +103,6 @@ public class ServiceNewsletter {
 
         }catch (Exception e){
             System.out.println(e.getMessage());
-            System.out.println(i);
         }
         System.out.println("Finish");
         return newsletters;
@@ -124,7 +123,6 @@ public class ServiceNewsletter {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return newsletters;
     }
-
 
     public boolean addNewsletter(Newsletter newsletter){
         req= new ConnectionRequest();
