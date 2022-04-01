@@ -13,21 +13,29 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.infernalgames.entities.Stream;
 import com.infernalgames.services.ServiceStream;
+import com.infernalgames.utils.Statics;
 
 public class WatchStream extends Form {
 
-    public WatchStream(){
-        Stream stream= ServiceStream.getInstance().getStream(16);
-        setTitle("Watch stream");
+    public WatchStream(Stream stream){
+        setTitle(stream.getTitle());
+        setLayout(BoxLayout.y());
 
-        Label title= new Label(stream.getTitle());
+
+        Label labelDesc= new Label(stream.getDescription());
         Label description= new Label(stream.getDescription());
+        Label category= new Label("Category: "+ stream.getCategory().getLabel());
+
         Button reconnectBtn= new Button("Reconnect");
-        Container ct = new Container(BoxLayout.x());
+        try {
+            Image picture= Image.createImage(Statics.IMAGES_URL+"uploads/images/products/"+stream.getAccessData().getStreamer().getPhoto()).fill(200, 200);
+            add(picture);
+        }catch (Exception exception){
+            Label pictureError= new Label("Picture not found");
+            add(pictureError);
+        }
 
-        ct.addAll(title, description, reconnectBtn);
-        add(ct);
-
+        addAll( labelDesc, description, category, reconnectBtn);
     }
 
     MediaPlayer mp;

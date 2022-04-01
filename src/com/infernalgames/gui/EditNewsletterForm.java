@@ -10,7 +10,10 @@ import com.infernalgames.services.ServiceNewsletter;
 import com.infernalgames.utils.Statics;
 
 import java.io.OutputStream;
-
+/**
+ *
+ * @author Fourat
+ */
 public class EditNewsletterForm extends Form {
 
     String imageSrcF=null;

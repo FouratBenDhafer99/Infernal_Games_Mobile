@@ -10,7 +10,10 @@ import com.infernalgames.entities.Subscription;
 import com.infernalgames.services.ServiceSubscription;
 
 import java.util.ArrayList;
-
+/**
+ *
+ * @author Fourat
+ */
 public class SubscriptionList extends Form {
 
     public SubscriptionList(Form previous){

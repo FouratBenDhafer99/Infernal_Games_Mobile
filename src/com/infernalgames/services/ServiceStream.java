@@ -63,6 +63,7 @@ public class ServiceStream {
                     user.setNom(mapU.get("name").toString());
                     user.setPrenom(mapU.get("lastName").toString());
                     user.setEmail(mapU.get("email").toString());
+                    user.setPhoto((mapU.get("image").toString()));
                     streamData.setStreamer(user);
                     //Stream
                     Stream s = new Stream();
@@ -93,6 +94,15 @@ public class ServiceStream {
                 streamData.setId((int) Float.parseFloat(map.get("id").toString()));
                 streamData.setStreamKey(map.get("streamKey").toString());
 
+                //Streamer
+                Map<String, Object> mapU = (Map<String, Object>) map.get("streamer");
+                Utilisateur user = new Utilisateur();
+                user.setId((int) Float.parseFloat(mapU.get("id").toString()));
+                user.setNom(mapU.get("name").toString());
+                user.setPrenom(mapU.get("lastName").toString());
+                user.setEmail(mapU.get("email").toString());
+                user.setPhoto((mapU.get("image").toString()));
+                streamData.setStreamer(user);
 
                 Stream s = new Stream();
                 s.setId((int) Float.parseFloat(streamsListJson.get("id").toString()));

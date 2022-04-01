@@ -6,7 +6,10 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.infernalgames.entities.StreamCategory;
 import com.infernalgames.services.ServiceStreamCategory;
-
+/**
+ *
+ * @author Fourat
+ */
 public class AddStreamCategoryForm extends Form {
 
     //To delete

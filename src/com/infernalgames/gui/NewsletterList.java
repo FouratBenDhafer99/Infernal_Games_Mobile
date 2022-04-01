@@ -7,7 +7,10 @@ import com.infernalgames.entities.Newsletter;
 import com.infernalgames.services.ServiceNewsletter;
 
 import java.util.ArrayList;
-
+/**
+ *
+ * @author Fourat
+ */
 public class NewsletterList extends Form {
 
     public NewsletterList(){
@@ -48,10 +51,20 @@ public class NewsletterList extends Form {
             Label sent= new Label(String.valueOf(newsletter.isSent()));
             //
 
-            Button edit= new Button();
-            FontImage.setMaterialIcon(edit, FontImage.MATERIAL_EDIT);
+            Container actions= new Container(BoxLayout.x());
+            if (!newsletter.isSent())
+            {
+                Button edit= new Button();
+                FontImage.setMaterialIcon(edit, FontImage.MATERIAL_EDIT);
+                edit.addActionListener(e->{
+                    new EditNewsletterForm(this, newsletter).show();
+                });
+                actions.add(edit);
+            }
+
             Button delete= new Button();
             FontImage.setMaterialIcon(delete, FontImage.MATERIAL_DELETE_FOREVER);
+            actions.add(delete);
 
             Container content= new Container();
             content.setLayout(new GridLayout(1,5));
@@ -65,13 +78,11 @@ public class NewsletterList extends Form {
                 sent.getAllStyles().setFgColor(0x000000);
             }
 
-            Container actions= BoxLayout.encloseX(edit, delete);
+
             content.add(title).add(author).add(date).add(sent).add(actions);
             data.add(content);
 
-            edit.addActionListener(e->{
-                new EditNewsletterForm(this, newsletter).show();
-            });
+
             delete.addActionListener(e->{
                 ServiceNewsletter.getInstance().deleteNewsletter(newsletter);
                 getContentPane().animateUnlayoutAndWait(150, 255);

@@ -6,7 +6,10 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.infernalgames.entities.StreamRating;
 import com.infernalgames.services.ServiceStreamRating;
-
+/**
+ *
+ * @author Fourat
+ */
 public class EditStreamRatingForm extends Form {
 
     Form parentForm=null;

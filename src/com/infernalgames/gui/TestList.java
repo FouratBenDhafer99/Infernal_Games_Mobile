@@ -17,7 +17,79 @@ import com.codename1.ui.layouts.BoxLayout;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+/*
+    public StreamsListBack(){
+        setTitle("Streams dashboard");
+        setLayout(BoxLayout.y());
 
+        ArrayList<Stream> streams= ServiceStream.getInstance().getAllStreams();
+
+        DefaultTableModel model= new DefaultTableModel(
+                new String[]{"Title", "Streamer", "Rating", "Category", "State"},
+                new Object[][] {}, false) {
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
+
+        for (Stream stream: streams){
+            model.addRow(
+                    stream.getAccessData().getStreamKey(),
+                    "Streamer",
+                    stream.getRating().toString(),
+                    stream.getCategory().toString(),
+                    stream.getState()
+            );
+        }
+
+        Table table= new Table(model){
+          @Override
+          protected Component createCell(Object value, int row, int column, boolean editable){
+              Component cell= super.createCell(value, row, column, editable);
+              if(row==-1){
+                  cell.getAllStyles().setBgColor(0x9932CC);
+                  cell.getAllStyles().setBgTransparency(255);
+              }else if(row%2==0){
+                  cell.getAllStyles().setBgColor(0xBA55D3);
+                  cell.getAllStyles().setBgTransparency(255);
+              }else{
+                  cell.getAllStyles().setBgColor(0xDDA0DD);
+                  cell.getAllStyles().setBgTransparency(255);
+              }
+              return cell;
+          }
+        };
+
+
+        add(table);
+        /*
+        Container streamTable= TableLayout.encloseIn(5,
+                new Label("Title"),
+                new Label("Streamer"),
+                new Label("Rating"),
+                new Label("Category"),
+                new Label("State"));
+
+        if(streams.size()>0) {
+            for (Stream stream : streams) {
+                streamTable.addAll(new Label(stream.getTitle()),
+                        new Label(stream.getAccessData().getStreamKey()),
+            //            new Label(stream.getAccessData().getStreamer().toString()),
+                        new Label(stream.getRating().toString()),
+                        new Label(stream.getCategory().toString()),
+                        new Label(""+stream.getState()));
+            }
+            add(streamTable);
+        }else{
+            Label label = new Label("There's no live streams right now :/");
+            Container ct = new Container(BoxLayout.x());
+
+            ct.add(label);
+            this.add(ct);
+        }
+
+
+    }*/
 public class TestList extends Form {
 
     MediaPlayer mp;
@@ -131,4 +203,80 @@ public class TestList extends Form {
         });
         hi.add(content);
     }
+
+
+    /*
+    public StreamsListBack(){
+        setTitle("Streams dashboard");
+        setLayout(BoxLayout.y());
+
+        ArrayList<Stream> streams= ServiceStream.getInstance().getAllStreams();
+
+        DefaultTableModel model= new DefaultTableModel(
+                new String[]{"Title", "Streamer", "Rating", "Category", "State"},
+                new Object[][] {}, false) {
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
+
+        for (Stream stream: streams){
+            model.addRow(
+                    stream.getAccessData().getStreamKey(),
+                    "Streamer",
+                    stream.getRating().toString(),
+                    stream.getCategory().toString(),
+                    stream.getState()
+            );
+        }
+
+        Table table= new Table(model){
+          @Override
+          protected Component createCell(Object value, int row, int column, boolean editable){
+              Component cell= super.createCell(value, row, column, editable);
+              if(row==-1){
+                  cell.getAllStyles().setBgColor(0x9932CC);
+                  cell.getAllStyles().setBgTransparency(255);
+              }else if(row%2==0){
+                  cell.getAllStyles().setBgColor(0xBA55D3);
+                  cell.getAllStyles().setBgTransparency(255);
+              }else{
+                  cell.getAllStyles().setBgColor(0xDDA0DD);
+                  cell.getAllStyles().setBgTransparency(255);
+              }
+              return cell;
+          }
+        };
+
+
+        add(table);
+        /*
+        Container streamTable= TableLayout.encloseIn(5,
+                new Label("Title"),
+                new Label("Streamer"),
+                new Label("Rating"),
+                new Label("Category"),
+                new Label("State"));
+
+        if(streams.size()>0) {
+            for (Stream stream : streams) {
+                streamTable.addAll(new Label(stream.getTitle()),
+                        new Label(stream.getAccessData().getStreamKey()),
+            //            new Label(stream.getAccessData().getStreamer().toString()),
+                        new Label(stream.getRating().toString()),
+                        new Label(stream.getCategory().toString()),
+                        new Label(""+stream.getState()));
+            }
+            add(streamTable);
+        }else{
+            Label label = new Label("There's no live streams right now :/");
+            Container ct = new Container(BoxLayout.x());
+
+            ct.add(label);
+            this.add(ct);
+        }
+
+
+    }*/
+
 }

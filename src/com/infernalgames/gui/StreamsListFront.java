@@ -4,9 +4,13 @@ import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
 import com.infernalgames.entities.Stream;
 import com.infernalgames.services.ServiceStream;
+import com.infernalgames.utils.Statics;
 
 import java.util.ArrayList;
-
+/**
+ *
+ * @author Fourat
+ */
 public class StreamsListFront extends Form {
 
     public StreamsListFront(){
@@ -17,12 +21,27 @@ public class StreamsListFront extends Form {
 
         if(streams.size()>0) {
             for (Stream stream : streams) {
-                Label label = new Label(stream.getTitle());
-                Container ct = new Container(BoxLayout.x());
-                Button watchStreamBtn = new Button("Watch stream!");
+                Container cntParent= new Container(BoxLayout.x());
+                Container ctChild = new Container(BoxLayout.yCenter());
+                Label title = new Label(stream.getTitle());
+                Label cat = new Label(stream.getCategory().getLabel());
+                Label rating = new Label(stream.getRating().getLabel());
+                Button watchStreamBtn = new Button();
+                cntParent.setLeadComponent(watchStreamBtn);
 
-                ct.addAll(label, watchStreamBtn);
-                add(ct);
+                try {
+                    Image picture= Image.createImage(Statics.IMAGES_URL+"uploads/images/products/"+stream.getAccessData().getStreamer().getPhoto()).fill(200, 200);
+                    cntParent.add(picture);
+                }catch (Exception exception){
+                    Label pictureError= new Label("Picture not found");
+                    cntParent.add(pictureError);
+                }
+                watchStreamBtn.addActionListener(e->{
+                    new WatchStream(stream).show();
+                });
+                ctChild.addAll(title, cat, rating);
+                cntParent.add(ctChild);
+                add(cntParent);
             }
         }else{
             Label label = new Label("There's no live streams right now :/");

@@ -9,9 +9,11 @@ import com.infernalgames.entities.Newsletter;
 import com.infernalgames.entities.Utilisateur;
 import com.infernalgames.services.ServiceNewsletter;
 import com.infernalgames.utils.Statics;
-
 import java.io.OutputStream;
-
+/**
+ *
+ * @author Fourat
+ */
 public class AddNewsletterForm extends Form {
 
     private String imageSrcF=null;

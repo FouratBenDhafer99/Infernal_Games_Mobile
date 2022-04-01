@@ -7,7 +7,10 @@ import com.infernalgames.entities.StreamCategory;
 import com.infernalgames.services.ServiceStreamCategory;
 
 import java.util.ArrayList;
-
+/**
+ *
+ * @author Fourat
+ */
 public class StreamCategoryList extends Form {
 
     public StreamCategoryList(Form previous){

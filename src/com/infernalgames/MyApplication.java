@@ -51,9 +51,12 @@ public class MyApplication {
             return;
         }
 
+        //new NewsletterList().show();
         //new StreamsListBack().show();
+        new StreamsListFront().show();
         //new BackGameList().show();
-        new FrontGameList().show();
+        //new FrontGameList().show();
+
     }
 
 

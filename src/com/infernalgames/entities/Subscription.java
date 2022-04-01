@@ -1,5 +1,8 @@
 package com.infernalgames.entities;
-
+/**
+ *
+ * @author Fourat
+ */
 public class Subscription {
 
     private int id;

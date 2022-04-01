@@ -7,7 +7,10 @@ import com.infernalgames.entities.StreamRating;
 import com.infernalgames.services.ServiceStreamRating;
 
 import java.util.ArrayList;
-
+/**
+ *
+ * @author Fourat
+ */
 public class StreamRatingList extends Form {
 
     public StreamRatingList(Form previous){
