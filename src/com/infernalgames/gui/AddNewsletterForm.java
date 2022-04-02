@@ -6,7 +6,7 @@ import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.ImageIO;
 import com.infernalgames.entities.Newsletter;
-import com.infernalgames.entities.Utilisateur;
+import com.infernalgames.entities.User;
 import com.infernalgames.services.ServiceNewsletter;
 import com.infernalgames.utils.Statics;
 import java.io.OutputStream;
@@ -184,7 +184,7 @@ public class AddNewsletterForm extends Form {
                     System.out.println(exception.getMessage());
                 }
 
-                Utilisateur author= new Utilisateur();
+                User author= new User();
                 Newsletter nw= new Newsletter(
                         titleIntro.getText(),
                         contentIntro.getText(),

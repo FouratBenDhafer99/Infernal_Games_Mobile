@@ -58,12 +58,12 @@ public class ServiceStream {
                     streamData.setStreamKey(map.get("streamKey").toString());
                     //Streamer
                     Map<String, Object> mapU = (Map<String, Object>) map.get("streamer");
-                    Utilisateur user = new Utilisateur();
+                    User user = new User();
                     user.setId((int) Float.parseFloat(mapU.get("id").toString()));
-                    user.setNom(mapU.get("name").toString());
-                    user.setPrenom(mapU.get("lastName").toString());
+                    user.setName(mapU.get("name").toString());
+                    user.setLastName(mapU.get("lastName").toString());
                     user.setEmail(mapU.get("email").toString());
-                    user.setPhoto((mapU.get("image").toString()));
+                    user.setImage((mapU.get("image").toString()));
                     streamData.setStreamer(user);
                     //Stream
                     Stream s = new Stream();
@@ -96,12 +96,12 @@ public class ServiceStream {
 
                 //Streamer
                 Map<String, Object> mapU = (Map<String, Object>) map.get("streamer");
-                Utilisateur user = new Utilisateur();
+                User user = new User();
                 user.setId((int) Float.parseFloat(mapU.get("id").toString()));
-                user.setNom(mapU.get("name").toString());
-                user.setPrenom(mapU.get("lastName").toString());
+                user.setName(mapU.get("name").toString());
+                user.setLastName(mapU.get("lastName").toString());
                 user.setEmail(mapU.get("email").toString());
-                user.setPhoto((mapU.get("image").toString()));
+                user.setImage((mapU.get("image").toString()));
                 streamData.setStreamer(user);
 
                 Stream s = new Stream();

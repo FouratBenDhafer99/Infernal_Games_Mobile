@@ -44,7 +44,7 @@ public class NewsletterList extends Form {
         for (Newsletter newsletter: newsletters){
             Label title= new Label(newsletter.getTitleIntro());
             //
-            Label author= new Label(newsletter.getAuthor().getNom());
+            Label author= new Label(newsletter.getAuthor().getName());
             //
             Label date= new Label(String.valueOf(newsletter.getDate()));
             //

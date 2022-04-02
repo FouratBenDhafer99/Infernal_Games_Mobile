@@ -1,8 +1,13 @@
 package com.infernalgames.gui;
 
 import com.codename1.ui.Button;
+import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.spinner.Picker;
+import com.infernalgames.entities.Product;
+
+import java.util.Date;
 
 public class Everything extends Form {
 
@@ -15,6 +20,8 @@ public class Everything extends Form {
         Button newsletter= new Button("Newsletter");
         Button gamesFront= new Button("Games Front");
         Button gamesBack= new Button("Games Back");
+        Button productBack= new Button("Product Back");
+        Button productFront= new Button("Product Front");
 
         addAll(streamFront, streamBack, newsletter, gamesBack, gamesFront);
 
@@ -23,7 +30,8 @@ public class Everything extends Form {
         newsletter.addActionListener(e->{new NewsletterList(this).show();});
         gamesFront.addActionListener(e->{new FrontGameList(this).show();});
         gamesBack.addActionListener(e->{new BackGameList(this).show();});
-
+        productFront.addActionListener(e->{new ProductsListFront(this).show();});
+        productBack.addActionListener(e->{new ProductsListBack(this).show();});
 
 
     }

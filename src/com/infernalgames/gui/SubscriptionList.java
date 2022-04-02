@@ -41,7 +41,7 @@ public class SubscriptionList extends Form {
 
             int i=0;
             for (Subscription sub: subs){
-                Label userName= new Label(sub.getUser().getNom()+" "+sub.getUser().getPrenom());
+                Label userName= new Label(sub.getUser().getName()+" "+sub.getUser().getLastName());
 
                 Label status=null;
                 if (sub.isStatus()){

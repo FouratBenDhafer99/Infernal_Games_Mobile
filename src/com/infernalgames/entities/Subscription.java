@@ -7,15 +7,15 @@ public class Subscription {
 
     private int id;
     private boolean status;
-    private Utilisateur user;
+    private User user;
 
     public Subscription(){}
-    public Subscription(boolean status, Utilisateur user) {
+    public Subscription(boolean status, User user) {
         this.status = status;
         this.user = user;
     }
 
-    public Subscription(int id, boolean status, Utilisateur user) {
+    public Subscription(int id, boolean status, User user) {
         this.id = id;
         this.status = status;
         this.user = user;
@@ -46,11 +46,11 @@ public class Subscription {
         this.status = status;
     }
 
-    public Utilisateur getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Utilisateur user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }

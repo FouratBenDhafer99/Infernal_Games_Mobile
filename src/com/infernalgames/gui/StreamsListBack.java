@@ -46,7 +46,7 @@ public class StreamsListBack extends Form {
             for (Stream stream: streams){
                 Label sTitle= new Label(stream.getTitle());
 
-                Label sStreamer= new Label(stream.getAccessData().getStreamer().getNom());
+                Label sStreamer= new Label(stream.getAccessData().getStreamer().getName());
 
                 Label sRating= new Label(stream.getRating().getLabel());
 

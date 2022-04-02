@@ -6,12 +6,12 @@ package com.infernalgames.entities;
 public class StreamData {
 
     private int id;
-    private Utilisateur streamer;
+    private User streamer;
     private String streamKey;
 
     public StreamData(){}
 
-    public StreamData(int id, Utilisateur streamer, String streamKey){
+    public StreamData(int id, User streamer, String streamKey){
         this.id= id;
         this.streamer= streamer;
         this.streamKey= streamKey;
@@ -30,11 +30,11 @@ public class StreamData {
         this.id = id;
     }
 
-    public Utilisateur getStreamer() {
+    public User getStreamer() {
         return streamer;
     }
 
-    public void setStreamer(Utilisateur streamer) {
+    public void setStreamer(User streamer) {
         this.streamer = streamer;
     }
 

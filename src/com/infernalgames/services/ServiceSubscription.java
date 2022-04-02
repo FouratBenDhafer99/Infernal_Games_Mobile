@@ -3,7 +3,7 @@ package com.infernalgames.services;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
 import com.infernalgames.entities.Subscription;
-import com.infernalgames.entities.Utilisateur;
+import com.infernalgames.entities.User;
 import com.infernalgames.utils.Statics;
 
 import java.util.ArrayList;
@@ -40,10 +40,10 @@ public class ServiceSubscription {
 
                 for (Map<String, Object> obj : list) {
                     Map<String, Object> map = (Map<String, Object>) obj.get("user");
-                    Utilisateur user = new Utilisateur();
+                    User user = new User();
                     user.setId((int) Float.parseFloat(map.get("id").toString()));
-                    user.setNom(map.get("name").toString());
-                    user.setPrenom(map.get("lastName").toString());
+                    user.setName(map.get("name").toString());
+                    user.setLastName(map.get("lastName").toString());
                     user.setEmail(map.get("email").toString());
 
                     Subscription sub= new Subscription();
@@ -55,10 +55,10 @@ public class ServiceSubscription {
                 }
             }else {
                 Map<String, Object> map = (Map<String, Object>) subsListJson.get("user");
-                Utilisateur user = new Utilisateur();
+                User user = new User();
                 user.setId((int) Float.parseFloat(map.get("id").toString()));
-                user.setNom(map.get("name").toString());
-                user.setPrenom(map.get("lastName").toString());
+                user.setName(map.get("name").toString());
+                user.setLastName(map.get("lastName").toString());
                 user.setEmail(map.get("email").toString());
 
                 Subscription sub= new Subscription();
@@ -91,7 +91,7 @@ public class ServiceSubscription {
         return subscriptions;
     }
 
-    public boolean subscribe(Utilisateur user){
+    public boolean subscribe(User user){
         req= new ConnectionRequest();
         String url = Statics.BASE_URL+"/newslettersMobile/subscribeToNewsletter";
         req.setUrl(url);
@@ -108,7 +108,7 @@ public class ServiceSubscription {
         return resultOK;
     }
 
-    public boolean unsubscribe(Utilisateur user){
+    public boolean unsubscribe(User user){
         req= new ConnectionRequest();
         String url = Statics.BASE_URL+"/newslettersMobile/unsubscribeToNewsletter";
         req.setUrl(url);

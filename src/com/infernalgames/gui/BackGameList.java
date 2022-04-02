@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class BackGameList extends Form {
 
+
     public BackGameList(Form previous){
         setTitle("Games");
         setLayout(BoxLayout.y());

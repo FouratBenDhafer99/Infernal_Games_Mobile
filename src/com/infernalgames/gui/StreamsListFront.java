@@ -30,7 +30,7 @@ public class StreamsListFront extends Form {
                 cntParent.setLeadComponent(watchStreamBtn);
 
                 try {
-                    Image picture= Image.createImage(Statics.IMAGES_URL+"uploads/images/products/"+stream.getAccessData().getStreamer().getPhoto()).fill(200, 200);
+                    Image picture= Image.createImage(Statics.IMAGES_URL+"uploads/images/products/"+stream.getAccessData().getStreamer().getImage()).fill(200, 200);
                     cntParent.add(picture);
                 }catch (Exception exception){
                     Label pictureError= new Label("Picture not found");

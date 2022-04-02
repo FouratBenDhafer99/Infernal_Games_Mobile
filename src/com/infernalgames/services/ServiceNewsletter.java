@@ -3,7 +3,7 @@ package com.infernalgames.services;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
 import com.infernalgames.entities.Newsletter;
-import com.infernalgames.entities.Utilisateur;
+import com.infernalgames.entities.User;
 import com.infernalgames.utils.Statics;
 
 import java.time.LocalDate;
@@ -44,10 +44,10 @@ public class ServiceNewsletter {
 
                     //Author
                     Map<String, Object> map = (Map<String, Object>) obj.get("author");
-                    Utilisateur user = new Utilisateur();
+                    User user = new User();
                     user.setId((int) Float.parseFloat(map.get("id").toString()));
-                    user.setNom(map.get("name").toString());
-                    user.setPrenom(map.get("lastName").toString());
+                    user.setName(map.get("name").toString());
+                    user.setLastName(map.get("lastName").toString());
                     user.setEmail(map.get("email").toString());
 
                     //Newsletter
@@ -74,10 +74,10 @@ public class ServiceNewsletter {
                     //Only one
 
                     Map<String, Object> map= (Map<String, Object>) newslettersListJson.get("author");
-                    Utilisateur user= new Utilisateur();
+                    User user= new User();
                     user.setId((int) Float.parseFloat(map.get("id").toString()));
-                    user.setNom(map.get("name").toString());
-                    user.setPrenom(map.get("lastName").toString());
+                    user.setName(map.get("name").toString());
+                    user.setLastName(map.get("lastName").toString());
                     user.setEmail(map.get("email").toString());
 
                     //Newsletter

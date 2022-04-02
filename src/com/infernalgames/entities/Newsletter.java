@@ -14,11 +14,11 @@ public class Newsletter {
     private String titleT, contentT, imageT;
     private LocalDate date;
     private boolean sent;
-    private Utilisateur author;
+    private User author;
 
     public Newsletter(){}
 
-    public Newsletter(int id, String titleIntro, String contentIntro, String titleF, String contentF, String imageF, String titleS, String contentS, String imageS, String titleT, String contentT, String imageT, LocalDate date, boolean sent, Utilisateur author) {
+    public Newsletter(int id, String titleIntro, String contentIntro, String titleF, String contentF, String imageF, String titleS, String contentS, String imageS, String titleT, String contentT, String imageT, LocalDate date, boolean sent, User author) {
         this.id = id;
         this.titleIntro = titleIntro;
         this.contentIntro = contentIntro;
@@ -36,7 +36,7 @@ public class Newsletter {
         this.author = author;
     }
 
-    public Newsletter(int id, String titleIntro, String contentIntro, String titleF, String contentF, String imageF, String titleS, String contentS, String imageS, String titleT, String contentT, String imageT, boolean sent, Utilisateur author) {
+    public Newsletter(int id, String titleIntro, String contentIntro, String titleF, String contentF, String imageF, String titleS, String contentS, String imageS, String titleT, String contentT, String imageT, boolean sent, User author) {
         this.id = id;
         this.titleIntro = titleIntro;
         this.contentIntro = contentIntro;
@@ -53,7 +53,7 @@ public class Newsletter {
         this.author = author;
     }
 
-    public Newsletter(String titleIntro, String contentIntro, String titleF, String contentF, String imageF, String titleS, String contentS, String imageS, String titleT, String contentT, String imageT, boolean sent, Utilisateur author) {
+    public Newsletter(String titleIntro, String contentIntro, String titleF, String contentF, String imageF, String titleS, String contentS, String imageS, String titleT, String contentT, String imageT, boolean sent, User author) {
         this.titleIntro = titleIntro;
         this.contentIntro = contentIntro;
         this.titleF = titleF;
@@ -186,11 +186,11 @@ public class Newsletter {
         this.sent = sent;
     }
 
-    public Utilisateur getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(Utilisateur author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 }
