@@ -4,6 +4,7 @@ import com.codename1.ui.Button;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.spinner.Picker;
 import com.infernalgames.entities.Product;
 
@@ -14,6 +15,10 @@ public class Everything extends Form {
     public Everything(){
         setTitle("Dashboard");
         setLayout(BoxLayout.yCenter());
+        BaseForm bar= new BaseForm();
+        bar.installSidemenu(UIManager.initFirstTheme("/theme"));
+        add(bar);
+
 
         Button streamFront= new Button("Streams Front");
         Button streamBack= new Button("Streams Back");

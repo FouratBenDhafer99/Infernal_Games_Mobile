@@ -6,6 +6,7 @@
 package com.infernalgames.gui;
 
 import com.codename1.components.SpanLabel;
+import com.codename1.ui.Button;
 import com.codename1.ui.Font;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
@@ -31,7 +32,7 @@ public class Accueil extends BaseForm{
         private void initGuiBuilderComponents(com.codename1.ui.util.Resources resourceObjectInstance) {
 
         setLayout(new com.codename1.ui.layouts.BorderLayout());
-        setTitle("Users");
+        setTitle("Hello!");
         setName("users");
         addComponent(com.codename1.ui.layouts.BorderLayout.CENTER, gui_Container_1);
 
@@ -50,8 +51,11 @@ public class Accueil extends BaseForm{
             bienvenue.getAllStyles().setFont(mediumPlainSystemFont);
             
             Image image = resourceObjectInstance.getImage("logo2.png").fill(getWidth(),680);
-            
-           
+
+
+            Button ev= new Button("Check what we offer!");
+            ev.addActionListener(e->{new Everything().show();});
+
             SpanLabel text3=new SpanLabel("Nous vous permettons de centraliser et mettre à jour toutes les informations sur vos membres, et d’y accéder sur ordinateur ou smartphone depuis n'importe où.");
             
             gui_Container_concatenation.add(bienvenue);
@@ -60,6 +64,7 @@ public class Accueil extends BaseForm{
            
             gui_Container_1.add(image);
             gui_Container_1.add(text3);
+            gui_Container_1.add(ev);
 
        
         }
