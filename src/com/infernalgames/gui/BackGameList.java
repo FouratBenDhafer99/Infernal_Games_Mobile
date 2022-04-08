@@ -59,5 +59,6 @@ public class BackGameList extends Form {
         }
 
         getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AjoutGameForm(this, previous).show());
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
 }

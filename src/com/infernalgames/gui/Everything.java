@@ -1,5 +1,6 @@
 package com.infernalgames.gui;
 
+import com.codename1.messaging.Message;
 import com.codename1.ui.Button;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
@@ -19,7 +20,6 @@ public class Everything extends Form {
         bar.installSidemenu(UIManager.initFirstTheme("/theme"));
         add(bar);
 
-
         Button streamFront= new Button("Streams Front");
         Button streamBack= new Button("Streams Back");
         Button newsletter= new Button("Newsletter");
@@ -28,7 +28,7 @@ public class Everything extends Form {
         Button productBack= new Button("Product Back");
         Button productFront= new Button("Product Front");
 
-        addAll(streamFront, streamBack, newsletter, gamesBack, gamesFront);
+        addAll(streamFront, streamBack, newsletter,  gamesFront, gamesBack, productFront, productBack);
 
         streamBack.addActionListener(e->{new StreamsListBack(this).show();});
         streamFront.addActionListener(e->{new StreamsListFront(this).show();});
@@ -37,7 +37,6 @@ public class Everything extends Form {
         gamesBack.addActionListener(e->{new BackGameList(this).show();});
         productFront.addActionListener(e->{new ProductsListFront(this).show();});
         productBack.addActionListener(e->{new ProductsListBack(this).show();});
-
 
     }
 }

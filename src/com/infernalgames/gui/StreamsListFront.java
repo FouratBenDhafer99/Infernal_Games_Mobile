@@ -37,7 +37,7 @@ public class StreamsListFront extends Form {
                     cntParent.add(pictureError);
                 }
                 watchStreamBtn.addActionListener(e->{
-                    new WatchStream(previous, stream).show();
+                    new WatchStream(this, stream).show();
                 });
                 ctChild.addAll(title, cat, rating);
                 cntParent.add(ctChild);

@@ -42,6 +42,6 @@ public class ProductsListFront extends Form {
             cntParent.setLeadComponent(btnGame);
             add(cntParent);
         }
-
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
 }

@@ -146,7 +146,8 @@ public class ServiceNewsletter {
 
         req.addArgument("sent", String.valueOf(newsletter.isSent()) );
 
-        req.addArgument("author", String.valueOf(9));
+        //req.addArgument("author", String.valueOf(9));
+        req.addArgument("author", String.valueOf(newsletter.getAuthor().getId()));
         // ****** REPLACE IT ******
         //req.addArgument("author", String.valueOf(newsletter.getAuthor().getId()));
 

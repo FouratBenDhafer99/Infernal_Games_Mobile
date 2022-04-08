@@ -79,6 +79,7 @@ public class EditNewsletterForm extends Form {
                         }else {
                             try {
                                 imgF= Image.createImage(imageSrcF);
+                                System.out.println(imageSrcF);
                                 //add(imgF);
                                 //revalidate();
                             }catch (Exception ex){}
@@ -107,6 +108,7 @@ public class EditNewsletterForm extends Form {
                         }else {
                             try {
                                 imgS= Image.createImage(imageSrcS);
+                                System.out.println(imageSrcS);
                                 //add(imgF);
                                 //revalidate();
                             }catch (Exception ex){}
@@ -135,6 +137,7 @@ public class EditNewsletterForm extends Form {
                         }else {
                             try {
                                 imgT= Image.createImage(imageSrcT);
+                                System.out.println(imageSrcT);
                                 //add(imgF);
                                 //revalidate();
                             }catch (Exception ex){}
@@ -154,6 +157,7 @@ public class EditNewsletterForm extends Form {
                 Dialog.show("ERROR","Fill all the fields",new Command("Okay"));
             }
             else{
+                System.out.println("1");
                 String extF= null;
                 String extS= null;
                 String extT= null;
@@ -164,14 +168,18 @@ public class EditNewsletterForm extends Form {
                     extS= imageSrcS.substring( imageSrcS.lastIndexOf(".")+1 );
                 }
                 if (imageSrcT.lastIndexOf(".")>0){
-                    extT= imageSrcF.substring( imageSrcT.lastIndexOf(".")+1 );
+                    extT= imageSrcT.substring( imageSrcT.lastIndexOf(".")+1 );
                 }
+                System.out.println(extF+" "+extS+" "+extT);
                 iF= titleIntro.getText()+titleF.getText()+"."+extF;
                 iS= titleIntro.getText()+titleS.getText()+"."+extS;
                 iT= titleIntro.getText()+titleT.getText()+"."+extT;
+                System.out.println(iF+" "+iS+" "+iT);
+
                 String imageFileF= Statics.IMAGES_URL + "Newsletters/"+iF;
                 String imageFileS= Statics.IMAGES_URL + "Newsletters/"+iS;
                 String imageFileT= Statics.IMAGES_URL + "Newsletters/"+iT;
+                System.out.println(imageFileF+" "+imageFileS+" "+imageFileT);
                 try {
                     OutputStream os= FileSystemStorage.getInstance().openOutputStream(imageFileF);
                     ImageIO.getImageIO().save(imgF, os, ImageIO.FORMAT_PNG, 1);
@@ -182,6 +190,7 @@ public class EditNewsletterForm extends Form {
                     os= FileSystemStorage.getInstance().openOutputStream(imageFileT);
                     ImageIO.getImageIO().save(imgT, os, ImageIO.FORMAT_PNG, 1);
                 }catch (Exception exception){
+                    System.out.println("Here");
                     System.out.println(exception.getMessage());
                 }
 

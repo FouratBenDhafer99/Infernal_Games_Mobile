@@ -60,6 +60,7 @@ public class AddNewsletterForm extends Form {
         addAll(titleT, contentT, labelT, btnT);
 
         CheckBox send= new CheckBox("Send");
+        send.setSelected(false);
         Button validate= new Button("Validate");
         addAll(send, validate);
 
@@ -78,6 +79,7 @@ public class AddNewsletterForm extends Form {
                             }else {
                                 try {
                                     imgF= Image.createImage(imageSrcF);
+                                    System.out.println(imageSrcF);
                                     //add(imgF);
                                     //revalidate();
                                 }catch (Exception ex){}
@@ -106,6 +108,7 @@ public class AddNewsletterForm extends Form {
                         }else {
                             try {
                                 imgS= Image.createImage(imageSrcS);
+                                System.out.println(imageSrcS);
                                 //add(imgF);
                                 //revalidate();
                             }catch (Exception ex){}
@@ -134,6 +137,7 @@ public class AddNewsletterForm extends Form {
                         }else {
                             try {
                                 imgT= Image.createImage(imageSrcT);
+                                System.out.println(imageSrcT);
                                 //add(imgF);
                                 //revalidate();
                             }catch (Exception ex){}
@@ -163,24 +167,29 @@ public class AddNewsletterForm extends Form {
                     extS= imageSrcS.substring( imageSrcS.lastIndexOf(".")+1 );
                 }
                 if (imageSrcT.lastIndexOf(".")>0){
-                    extT= imageSrcF.substring( imageSrcT.lastIndexOf(".")+1 );
+                    extT= imageSrcT.substring( imageSrcT.lastIndexOf(".")+1 );
                 }
                 iF= titleIntro.getText()+titleF.getText()+"."+extF;
                 iS= titleIntro.getText()+titleS.getText()+"."+extS;
                 iT= titleIntro.getText()+titleT.getText()+"."+extT;
+                System.out.println(iF+" "+iS+" "+iT);
                 String imageFileF= Statics.IMAGES_URL + "Newsletters/"+iF;
                 String imageFileS= Statics.IMAGES_URL + "Newsletters/"+iS;
                 String imageFileT= Statics.IMAGES_URL + "Newsletters/"+iT;
+
+                System.out.println(imageFileF+" "+imageFileS+" "+imageFileT);
                 try {
                     OutputStream os= FileSystemStorage.getInstance().openOutputStream(imageFileF);
                     ImageIO.getImageIO().save(imgF, os, ImageIO.FORMAT_PNG, 1);
 
-                    os= FileSystemStorage.getInstance().openOutputStream(imageFileS);
-                    ImageIO.getImageIO().save(imgS, os, ImageIO.FORMAT_PNG, 1);
+                    OutputStream sos= FileSystemStorage.getInstance().openOutputStream(imageFileS);
+                    ImageIO.getImageIO().save(imgF, sos, ImageIO.FORMAT_PNG, 1);
 
-                    os= FileSystemStorage.getInstance().openOutputStream(imageFileT);
-                    ImageIO.getImageIO().save(imgT, os, ImageIO.FORMAT_PNG, 1);
+                    OutputStream tos= FileSystemStorage.getInstance().openOutputStream(imageFileT);
+                    ImageIO.getImageIO().save(imgF, tos, ImageIO.FORMAT_PNG, 1);
                 }catch (Exception exception){
+                    System.out.println("Here");
+                    System.out.println(exception.toString());
                     System.out.println(exception.getMessage());
                 }
 
@@ -193,12 +202,13 @@ public class AddNewsletterForm extends Form {
                         iF,
                         titleS.getText(),
                         contentS.getText(),
-                        iS,
+                        iF,
                         titleT.getText(),
                         contentT.getText(),
-                        iT,
+                        iF,
                         send.isSelected(),
-                        author
+                        Statics.userconnecter
+                        //author
                 );
 
                 try {

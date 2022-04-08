@@ -42,7 +42,7 @@ public class WatchStream extends Form {
         browser.setPreferredSize(new Dimension( 250, 600));
 
         addAll(browser, labelDesc, description, category);
-        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> new StreamsListFront(parent).showBack());
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> parent.showBack());
     }
 
 }

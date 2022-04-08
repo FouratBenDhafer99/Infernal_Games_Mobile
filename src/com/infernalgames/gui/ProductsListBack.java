@@ -58,5 +58,6 @@ public class ProductsListBack extends Form {
         }
 
         getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new AddProductForm(previous).show());
+        getToolbar().addMaterialCommandToLeftBar("Back", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
 }
