@@ -10,7 +10,9 @@ import com.codename1.ui.spinner.Picker;
 import com.infernalgames.entities.Product;
 
 import java.util.Date;
-
+/**
+ @author Fourat
+ */
 public class Everything extends Form {
 
     public Everything(){
@@ -20,15 +22,16 @@ public class Everything extends Form {
         bar.installSidemenu(UIManager.initFirstTheme("/theme"));
         add(bar);
 
-        Button streamFront= new Button("Streams Front");
-        Button streamBack= new Button("Streams Back");
-        Button newsletter= new Button("Newsletter");
-        Button gamesFront= new Button("Games Front");
-        Button gamesBack= new Button("Games Back");
-        Button productBack= new Button("Product Back");
-        Button productFront= new Button("Product Front");
+        Button streamFront= new Button("Streams client side");
+        Button streamBack= new Button("Streams management");
+        Button newsletter= new Button("Newsletter management");
+        Button gamesFront= new Button("Games client side");
+        Button gamesBack= new Button("Games management");
+        Button productBack= new Button("Products management");
+        Button productFront= new Button("Product client side");
+        Button adBack= new Button("Ads management");
 
-        addAll(streamFront, streamBack, newsletter,  gamesFront, gamesBack, productFront, productBack);
+        addAll(streamFront, streamBack, newsletter,  gamesFront, gamesBack, productFront, productBack, adBack);
 
         streamBack.addActionListener(e->{new StreamsListBack(this).show();});
         streamFront.addActionListener(e->{new StreamsListFront(this).show();});
@@ -37,6 +40,7 @@ public class Everything extends Form {
         gamesBack.addActionListener(e->{new BackGameList(this).show();});
         productFront.addActionListener(e->{new ProductsListFront(this).show();});
         productBack.addActionListener(e->{new ProductsListBack(this).show();});
+        adBack.addActionListener(e->{new AdForm(this).show();});
 
     }
 }

@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
-
+/**
+ @author Fourat
+ */
 public class ServiceStream {
 
     public ArrayList<Stream> streams;

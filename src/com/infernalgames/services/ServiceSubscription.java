@@ -9,7 +9,9 @@ import com.infernalgames.utils.Statics;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+/**
+ @author Fourat
+ */
 public class ServiceSubscription {
 
     public ArrayList<Subscription> subscriptions;

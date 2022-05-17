@@ -8,7 +8,9 @@ import com.infernalgames.utils.Statics;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+/**
+ @author Fourat
+ */
 public class ServiceStreamCategory {
     public ArrayList<StreamCategory> categories;
     public static ServiceStreamCategory instance=null;
